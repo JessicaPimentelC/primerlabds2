@@ -4,18 +4,15 @@ jobs:
   heroku-deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
-    - uses: akhileshns/heroku-deploy@v3.12.12
-      - name: Run get upgrade
-        run: sudo apt-get upgrade
-        
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12
       - name: Install node modules
         run: npm install
         
       - name: Run tests
         run: npm test  
-      with:
-        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-        heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
-        heroku_email: ${{secrets.HEROKU_EMAIL}}
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
